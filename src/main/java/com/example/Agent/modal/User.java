@@ -21,10 +21,10 @@ public class User {
 
     private ROLE role=ROLE.ROLE_SALESMAN;
 
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    private Address address;
- @OneToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Address> address;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private ContactDetail contactDetail;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Order> orders;

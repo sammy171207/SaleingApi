@@ -104,7 +104,7 @@ public class CartServiceImpl implements CartService {
     public Long calculateCartTotals(Cart cart) throws Exception {
         Long total= 0L;
         for(CartItem cartItem:cart.getCartItems()) {
-            total +=(long) cartItem.getProduct().getPrice() * cartItem.getQuantity();
+            total *=(long) cartItem.getProduct().getPrice() * cartItem.getQuantity();
         }
         return total;
     }
