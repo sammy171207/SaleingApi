@@ -28,4 +28,6 @@ public class User {
     private ContactDetail contactDetail;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Order> orders;
+
+
 }

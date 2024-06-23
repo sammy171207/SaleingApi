@@ -17,7 +17,11 @@ public class UserServiceImp implements UserService {
     @Override
     public User findUserByJwtToken(String jwt) throws Exception {
          String email=jwtProvider.getEmailFromJwtToken(jwt);
-         User user=findUserByEmail(email);
+        System.out.println("find"+email);
+         User user=findUserByUsername(email);
+         if(user==null){
+             throw new Exception("User Not Found");
+         }
          return user;
     }
 
@@ -30,7 +34,16 @@ public class UserServiceImp implements UserService {
     public User findUserByEmail(String email) throws Exception {
         User user=userRepository.findByEmail(email);
         if(user==null){
-            throw new Exception("user not found");
+            throw new Exception("useremail not found");
+        }
+        return user;
+    }
+
+    @Override
+    public User findUserByUsername(String username) throws Exception {
+        User user=userRepository.findByUsername(username);
+        if(user==null){
+            throw new Exception("username not found");
         }
         return user;
     }

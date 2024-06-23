@@ -54,6 +54,8 @@ public class AuthController {
         createdUser.setUsername(user.getUsername());
         createdUser.setRole(user.getRole());
         createdUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        createdUser.setAddress(user.getAddress());
+        createdUser.setContactDetail(user.getContactDetail());
 
         // Save the user to the database
         User savedUser = userRepository.save(createdUser);
@@ -79,7 +81,7 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<AuthResponse> signin(@RequestBody LoginRequest req) {
-        String username = req.getEmail();
+        String username = req.getUsername();
         String password = req.getPassword();
         Authentication authentication = authenticate(username, password);
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
