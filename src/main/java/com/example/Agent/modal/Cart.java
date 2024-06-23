@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-
-@Data
 @Entity
+@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cart {
@@ -22,6 +22,7 @@ public class Cart {
     @OneToOne
     private User user;
 
+    private Long total;
 
     @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
     private List<CartItem> cartItems=new ArrayList<>();

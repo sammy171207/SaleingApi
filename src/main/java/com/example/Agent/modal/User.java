@@ -20,8 +20,8 @@ public class User {
     private String password;
 
     private ROLE role=ROLE.ROLE_SALESMAN;
-  @OneToOne(cascade = CascadeType.ALL)
 
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     private Address address;
  @OneToOne(cascade = CascadeType.ALL)
 
